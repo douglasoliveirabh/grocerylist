@@ -1,0 +1,26 @@
+{
+  "name": "grocerylist",
+  "version": "1.0.0",
+  "description": "A simple app for grocerylist",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/douglasoliveirabh/grocerylist.git"
+  },
+  "author": "Douglas Everton de Oliveira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/douglasoliveirabh/grocerylist/issues"
+  },
+  "homepage": "https://github.com/douglasoliveirabh/grocerylist#readme",
+  "dependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.18.0",
+    "babel-preset-es2015": "^6.18.0",
+    "express": "^4.14.0"
+  }
+}
