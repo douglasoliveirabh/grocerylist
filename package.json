@@ -5,18 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node index.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/douglasoliveirabh/grocerylist.git"
+    "start": "babel-node index.js",
+    "test-integration" : "mocha --opts server/test/integration/mocha.opts server/test/integration/*.spec.js"
   },
   "author": "Douglas Everton de Oliveira",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/douglasoliveirabh/grocerylist/issues"
-  },
-  "homepage": "https://github.com/douglasoliveirabh/grocerylist#readme",
   "dependencies": {
     "babel": "^6.5.2",
     "babel-cli": "^6.18.0",
