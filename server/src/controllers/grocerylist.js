@@ -8,6 +8,29 @@ class GroceryListController {
         this.GroceryList = GroceryList;
     }
 
+    Get(req, res){
+
+        const defaulGroceryList = [{
+                id: 1,
+                name: "grocery list default",
+                items: []
+        }];
+        
+        res.json(defaulGroceryList);
+    }
+
+    /*Get(req, res) { 
+        groceryListController
+            .GetAll()
+            .then(result => {
+               defaultResponse(result);
+            })
+            .catch(result => {
+                errorResponse(error.message);
+            })
+    }*/
+
+
     GetAll(){
         //console.log(this);
         return this
