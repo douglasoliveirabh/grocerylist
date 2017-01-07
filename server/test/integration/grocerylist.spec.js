@@ -1,23 +1,54 @@
+import mongoose from 'mongoose';
+
 describe("Integration Tests for Grocery List routes", () => {
-    const defaulGroceryList = {
-        id: 1,
+
+    const GroceryList = app.datasource.models.GroceryList;
+    const defaulGroceryList = {  
+        _id : "00000001e338b31d688e0274",
         name: "grocery list default",
         items: []
-    }   
+    };
+
+    
+    beforeEach(done => {            
+        GroceryList
+            .remove({})
+            .then(() => {                
+                new GroceryList(defaulGroceryList).save();                
+            })
+            .then(() => {
+                done();
+            });
+    });
+
 
     describe("GET /grocerylists", () => {
-        it("Should return a list of grocery lists", done => {            
+        it("Should return a list of grocery lists", done => {                        
             request
                 .get("/grocerylists")
-                .end((err, res) => {
-                    expect(res.body[0].id).to.be.equal(defaulGroceryList.id);
+                .end((err, res) => {  
+
+                    assert.ok(mongoose.Types.ObjectId(res.body[0]._id).equals(defaulGroceryList._id));                                      
                     expect(res.body[0].name).to.be.equal(defaulGroceryList.name);
                     expect(res.body[0].items.length).to.be.equal(defaulGroceryList.items.length);
 
                     done(err);
-                })
+                })                                        
+        });
+    });
+    
+   describe("GET /grocerylists/:id", () => {
+        it("Should return a grocerylist by id", done => {            
+            request
+                .get("/grocerylists/00000001e338b31d688e0274")                
+                .end((err, res) => {                                           
 
+                    assert.ok(mongoose.Types.ObjectId(res.body._id).equals(defaulGroceryList._id));      
+                    expect(res.body.name).to.be.equal(defaulGroceryList.name);
+                    expect(res.body.items.length).to.be.equal(defaulGroceryList.items.length);            
 
+                    done(err);
+                })                               
         });
     });
 

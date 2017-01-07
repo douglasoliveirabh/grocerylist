@@ -1,44 +1,30 @@
 import errorResponse from './errorresponse';
 import defaultResponse from './defaultresponse';
+import mongoose from 'mongoose';
 
 
 class GroceryListController {
 
     constructor(GroceryList) {
         this.GroceryList = GroceryList;
-    }
+    }    
 
-    Get(req, res){
-
-        const defaulGroceryList = [{
-                id: 1,
-                name: "grocery list default",
-                items: []
-        }];
-        
-        res.json(defaulGroceryList);
-    }
-
-    /*Get(req, res) { 
-        groceryListController
-            .GetAll()
-            .then(result => {
-               defaultResponse(result);
-            })
-            .catch(result => {
-                errorResponse(error.message);
-            })
-    }*/
-
-
-    GetAll(){
-        //console.log(this);
+     GetAll(){        
         return this
                  .GroceryList
                  .find()
                  .then(result => defaultResponse(result))
                  .catch(error => errorResponse(error.message));        
+     }
+ 
+    GetById(id){            
+        return this
+                .GroceryList
+                .findById(id)
+                .then(result => defaultResponse(result))
+                .catch(error => errorResponse(error.message));                    
     }
+    
 
 }
 

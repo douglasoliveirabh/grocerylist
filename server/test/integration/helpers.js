@@ -5,3 +5,4 @@ import app from '../../src/app';
 global.app = app;
 global.request = supertest(app);
 global.expect = chai.expect;
+global.assert = chai.assert;
