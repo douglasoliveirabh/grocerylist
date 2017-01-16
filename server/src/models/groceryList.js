@@ -1,8 +1,10 @@
+import GroceryListItem from './groceryListItem';
+
 export default (mongoose, Schema) => {
 
-    const User = mongoose.model('GroceryList', new Schema({                                                 
+    const GroceryList = mongoose.model('GroceryList', new Schema({                                                 
                                                 name: String, 
-                                                items: []
+                                                items: [GroceryListItem]
                                             }));                                            
-    return User;
+    return GroceryList;
 }
